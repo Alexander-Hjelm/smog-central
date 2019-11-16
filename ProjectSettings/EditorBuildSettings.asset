@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloVuforia.unity
+    path: Assets/Scenes/HelloVuforia.unity
     guid: 3be983d708736a04e8e12f36fc84f542
   m_configObjects: {}
