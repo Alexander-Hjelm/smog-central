@@ -1,45 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FanInCollider : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    HashSet<GameObject> parts;
+    const float maxSpeed = 10.0f;
+    float fanMaxForce = 1.0f;
 
-    void OnCollisionEnter(Collision other)
+    void Start()
     {
-        Debug.Log("CollisionEnter \"" + other.gameObject.name + " \"Object");
+        parts = new HashSet<GameObject>();
     }
 
-    void OnCollisionStay(Collision other)
+    void Update()
     {
-        Debug.Log("CollisionStay \"" + other.gameObject.name + " \"Object");
+
     }
 
-    void OnCollisionExit(Collision other)
+    private void FixedUpdate()
     {
-        Debug.Log("CollisionExit \"" + other.gameObject.name + " \"Object");
+
+        float yAng = transform.rotation.eulerAngles.y+180.0f;
+
+        foreach (var p in parts)
+        {
+
+            var rig = p.GetComponent<Rigidbody>();
+            var tmpDir = Quaternion.Euler(0.0f, yAng, 0.0f) * Vector3.forward;
+            //Change  tmpDir here relative to dir.
+            rig.AddForce(fanMaxForce * tmpDir);
+            if (rig.velocity.magnitude > maxSpeed)
+            {
+                rig.velocity = rig.velocity.normalized * maxSpeed;
+            }
+
+        }
     }
+
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TriggerEnter \"" + other.gameObject.name + " \"Object");
+        if (other.gameObject.GetComponent<Rigidbody>() != null)
+            parts.Add(other.gameObject);
     }
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("TriggerStay \"" + other.gameObject.name + " \"Object");
+
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("TriggerExit \"" + other.gameObject.name + " \"Object");
+        parts.Remove(other.gameObject);
     }
 }
