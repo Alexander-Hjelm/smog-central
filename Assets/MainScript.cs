@@ -5,11 +5,14 @@ using UnityEngine;
 public class MainScript : MonoBehaviour
 {
 
-    //private List<GameObject fans;
+    private List<GameObject> lands;
 
     void Start()
     {
+        lands = new List<GameObject>();
+
         
+
     }
 
 
