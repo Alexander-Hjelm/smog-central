@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineMaterial
+  m_Name: RimMaterial
   m_Shader: {fileID: 4800000, guid: 6118f5814ef8b898d9198cb2f2324957, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
