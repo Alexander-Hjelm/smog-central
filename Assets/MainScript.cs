@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
-
+    public GameObject FactorySpawn;
     private List<GameObject> lands;
 
     void Start()
@@ -12,7 +12,10 @@ public class MainScript : MonoBehaviour
         lands = new List<GameObject>();
 
         
-
+        foreach(GameObject land in lands)
+        {
+            land.GetComponent<Country>().ParticleType = FactorySpawn;
+        }
     }
 
 
