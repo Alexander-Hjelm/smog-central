@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Country : MonoBehaviour //All countries have this script
 {
+
     public int NumParticles { get; set; }
     public float Area { get; set; }
     private HashSet<GameObject> smogs;
+    public int Production { get; set; }
+    private int randNum;
+    public GameObject ParticleType { get; set; }
 
     public void AddSmog(GameObject smog) //If a particle raycasts into the country, call this foo
     {
@@ -30,17 +34,22 @@ public class Country : MonoBehaviour //All countries have this script
 
     void Start()
     {
+        Production = 1;
         smogs = new HashSet<GameObject>();
     }
 
     private void FixedUpdate()
     {
-        
+      
     }
 
     private void Update()
     {
-        
+        randNum = Random.Range(1, 100);
+        if (randNum <= Production && ParticleType)
+        {
+            var particle = Instantiate(ParticleType);
+        }
     }
 
 
