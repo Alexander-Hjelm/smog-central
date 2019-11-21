@@ -1253,6 +1253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0cf436d778b664e87903d1d470adad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  co2_server_host: hglass.ddns.net
+  co2_server_port: 6666
 --- !u!4 &1943487541
 Transform:
   m_ObjectHideFlags: 0
