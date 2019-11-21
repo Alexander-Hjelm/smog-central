@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6697976494145268323
 Transform:
   m_ObjectHideFlags: 0
@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 5250008696011282140}
   - component: {fileID: 5250008696007857916}
   - component: {fileID: 5250008696008987708}
+  - component: {fileID: 9001861027860247525}
   m_Layer: 0
   m_Name: Fan_Reg
   m_TagString: Untagged
@@ -300,6 +301,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &9001861027860247525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250008696010918652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33d0badb935ac844bd1652389e82598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5250008696010918654
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1708727567888194072
 Transform:
   m_ObjectHideFlags: 0
