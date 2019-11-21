@@ -9,7 +9,8 @@ public class Country : MonoBehaviour //All countries have this script
     public float Area { get; set; }
     public int Production { get; set; }
     private int randNum;
-
+  //  public GameObject FactoryVisualPrefab;
+  //  private GameObject FactoryVis;
 
     public float GetCO2()
     {
@@ -23,6 +24,9 @@ public class Country : MonoBehaviour //All countries have this script
     void Start()
     {
         Production = 1;
+      //  FactoryVis = Instantiate(FactoryVisualPrefab, transform);
+     //   FactoryVis.transform.localPosition = new Vector3(0, 0, 0);
+        //FactoryVis.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 
     private void FixedUpdate()

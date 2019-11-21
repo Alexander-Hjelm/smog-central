@@ -11,7 +11,7 @@ public class ParticleScript : MonoBehaviour
     void Start()
     {
         partSys = GetComponent<ParticleSystem>();
-        land = GetComponent<Country>();
+        land = GetComponentInParent<Country>();
     }
 
 
