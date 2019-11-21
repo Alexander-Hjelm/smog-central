@@ -61,4 +61,22 @@ public class FanScript : MonoBehaviour
         checkAimingOnLand();
 
     }
+    private int frames = 0;
+
+    private void FixedUpdate()
+    {
+        frames = (frames + 1) % 20;
+
+        if (standsOnLand && aimsAtLand && frames == 1)
+        {
+            Country c1 = standsOnLand.GetComponent<Country>();
+            Country c2 = aimsAtLand.GetComponent<Country>();
+            if(c1.NumParticles > 0)
+            {
+                c1.NumParticles--;
+                c2.NumParticles++;
+            }
+
+        }
+    }
 }
