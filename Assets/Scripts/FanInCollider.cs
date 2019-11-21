@@ -18,6 +18,16 @@ public class FanInCollider : MonoBehaviour {
 
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("TESTTT");
+    }
+
+    private void OnParticleTrigger()
+    {
+        Debug.Log("TRIGGG");
+    }
+
     private void FixedUpdate()
     {
 
@@ -41,6 +51,7 @@ public class FanInCollider : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("HEHEHE");
         if (other.gameObject.GetComponent<Rigidbody>() != null)
             parts.Add(other.gameObject);
     }

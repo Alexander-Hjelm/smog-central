@@ -6,10 +6,10 @@ public class FanScript : MonoBehaviour
 {
     public GameObject standsOnLand { get; set; }
     public GameObject aimsAtLand { get; set; }
+    private ParticleSystemForceField forceField;
 
     private RaycastHit hit;
     private int layerMask;
-
 
     void checkLandUnder()
     {
@@ -52,6 +52,7 @@ public class FanScript : MonoBehaviour
     void Start()
     {
         layerMask = LayerMask.GetMask("Country");
+        forceField = GetComponent<ParticleSystemForceField>();
     }
 
 
@@ -59,6 +60,9 @@ public class FanScript : MonoBehaviour
     {
         checkLandUnder();
         checkAimingOnLand();
+       // Vector3 AimAt = transform.TransformDirection(Vector3.right);
+       // forceField.directionX = AimAt.x;
+       // forceField.directionY = AimAt.z;
 
     }
     private int frames = 0;

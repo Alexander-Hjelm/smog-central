@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ParticleScript : MonoBehaviour
 {
     private ParticleSystem partSys;
@@ -14,8 +14,20 @@ public class ParticleScript : MonoBehaviour
         land = GetComponent<Country>();
     }
 
+
     void Update()
     {
+        /*ParticleSystem.Particle[] emittedParticles = new ParticleSystem.Particle[partSys.particleCount];
+        var parts = partSys.GetParticles(emittedParticles);
+        for(int i = 0; i < parts; i++)
+        {
+            var tmpVel = emittedParticles[i].velocity;
+            tmpVel.x = -50;
+            emittedParticles[i].velocity = tmpVel;
+        }
+        partSys.SetParticles(emittedParticles, emittedParticles.Length);*/
+
+
         var emiss = partSys.emission;
         var main = partSys.main;
         main.maxParticles = 10;
@@ -30,6 +42,8 @@ public class ParticleScript : MonoBehaviour
             }
 
         }
+
+
 
     }
 }
