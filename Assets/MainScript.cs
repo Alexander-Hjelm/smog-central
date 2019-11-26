@@ -44,7 +44,7 @@ public class MainScript : MonoBehaviour
                 String[] data_pair = dp.Split(':');
                 if (String.Equals(data_pair[1].Trim(), "null")) 
                     continue;
-                switch (data_pair[0]) {
+                switch (data_pair[0].Trim()) {
                     case "\"carbonIntensity\"":
                         data.carbonIntensity = Double.Parse(data_pair[1].Trim());
                         break;
