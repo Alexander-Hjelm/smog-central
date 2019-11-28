@@ -19,7 +19,7 @@ public class MainScript : MonoBehaviour
     private static MainScript _instance;
 
     // co2_map holds a mapping from country codes to co2 figures
-    public Dictionary<string, Co2Data> co2_map = 
+    private Dictionary<string, Co2Data> co2_map = 
             new Dictionary<string, Co2Data>();
 
     // type for data received from co2server
@@ -107,15 +107,11 @@ public class MainScript : MonoBehaviour
         }
     }
 
-
-    void Update()
+    public static double GetCarbonIntensityByCountry(string countryCode)
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        
+        Debug.Log(_instance.co2_map["SE"]);
+        Co2Data data = _instance.co2_map[countryCode];
+        return data.carbonIntensity;
     }
 
 }
