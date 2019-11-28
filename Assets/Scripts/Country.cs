@@ -5,18 +5,17 @@ using UnityEngine;
 public class Country : MonoBehaviour //All countries have this script
 {
     [SerializeField] private string _countryCode;
+    [SerializeField] private float _area; // Area in km2
 
-    public int NumParticles { get; set; }
-    public float Area { get; set; }
+    public int NumParticles { get; set; } // NumParticles should be Area * Instensity
     public int Production { get; set; }
 
     private Color SMOG_COLOR_LOW = Color.green;
     private Color SMOG_COLOR_MID = Color.yellow;
     private Color SMOG_COLOR_HI = Color.red;
     // The thresholds on smog concentration that control what color will be shown
-    // TODO: What should these be? What is the maximum smog concentration?
-    private const float SMOG_C_UPPER_THRESH = 1.0f;
-    private const float SMOG_C_LOWER_THRESH = 1000.0f;
+    private const float SMOG_C_UPPER_THRESH = 1000.0f;
+    private const float SMOG_C_LOWER_THRESH = 0.0f;
 
     private Material _material;
     private int randNum;
@@ -29,7 +28,7 @@ public class Country : MonoBehaviour //All countries have this script
         {
             return 0;
         }
-        return NumParticles/Area;
+        return NumParticles/_area;
     }
 
     private void Awake()
@@ -62,6 +61,11 @@ public class Country : MonoBehaviour //All countries have this script
 
         // Set material color depending on CO2 conc
         SetMaterialColor(GetSmogColorByConcentration());
+    }
+
+    public float GetArea()
+    {
+        return _area;
     }
 
     private Color GetSmogColorByConcentration()

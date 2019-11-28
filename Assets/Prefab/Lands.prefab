@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: SE
+  _area: 450295
 --- !u!1 &507759848751164512
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: GB
+  _area: 242495
 --- !u!1 &566444933047204654
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: AL
+  _area: 28748
 --- !u!1 &665877324567240041
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: NO
+  _area: 385178
 --- !u!1 &1065452738328863398
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: TR
+  _area: 23507
 --- !u!1 &1245764331320093492
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: AT
+  _area: 83858
 --- !u!1 &1489602385791247963
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: SK
+  _area: 49036
 --- !u!1 &1540615870048698224
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: LI
+  _area: 160
 --- !u!1 &1564308602484286344
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: CZ
+  _area: 78866
 --- !u!1 &1657980487242716527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: LV
+  _area: 64589
 --- !u!1 &1979558510864421477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: BY
+  _area: 207600
 --- !u!1 &2048187684270295351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: RO
+  _area: 238397
 --- !u!1 &2142731982359769798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: DE
+  _area: 357386
 --- !u!1 &2363853330614012147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: IS
+  _area: 102775
 --- !u!1 &2683338639103364214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,6 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: UA
+  _area: 603628
 --- !u!1 &2770304212954238946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: LT
+  _area: 65300
 --- !u!1 &2812854691323464564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,6 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: CH
+  _area: 41290
 --- !u!1 &3746649970066027480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: PL
+  _area: 312685
 --- !u!1 &3971418653760505783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: BG
+  _area: 110994
 --- !u!1 &4019659077063152612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: IT
+  _area: 301338
 --- !u!1 &4431628763711801033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: PT
+  _area: 91568
 --- !u!1 &4541233538789163241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +3008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: FR
+  _area: 551695
 --- !u!1 &5156898079548198190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,6 +3102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: IE
+  _area: 70273
 --- !u!1 &5473140898314454477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,6 +3241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: EL
+  _area: 131940
 --- !u!1 &5736893870844606778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,6 +3380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: SI
+  _area: 20273
 --- !u!1 &5922348230325497486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,6 +3474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: FI
+  _area: 338145
 --- !u!1 &5978270953766420928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,6 +3568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: ES
+  _area: 498511
 --- !u!1 &6028447042088831021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,6 +3752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: NL
+  _area: 41198
 --- !u!1 &6275954019265906954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +3936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: HU
+  _area: 93030
 --- !u!1 &7003867174151348491
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,6 +4030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: DK
+  _area: 44493
 --- !u!1 &7082131968715411231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,6 +4214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: MD
+  _area: 33846
 --- !u!1 &7314538279094561577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,6 +4443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: BA
+  _area: 51129
 --- !u!1 &7993055213874238513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4550,6 +4582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: RU
+  _area: 3972400
 --- !u!1 &8244787156508492953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: MK
+  _area: 25713
 --- !u!1 &8668035574419555639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,6 +4995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: EE
+  _area: 45339
 --- !u!1 &8705075428397719703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,6 +5089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: BE
+  _area: 30510
 --- !u!1 &8957883189576916274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,6 +5183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: RS
+  _area: 88361
 --- !u!1 &8990440226153105366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: LU
+  _area: 2586
 --- !u!1 &9088028399387814099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,6 +5506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countryCode: HR
+  _area: 56594
 --- !u!1001 &4982686014098971308
 PrefabInstance:
   m_ObjectHideFlags: 0
