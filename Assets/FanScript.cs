@@ -31,7 +31,7 @@ public class FanScript : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, AimAt * 10.0f, Color.red);
+           // Debug.DrawRay(transform.position, AimAt * 10.0f, Color.red);
             standsOnLand = null;
         }
     }
@@ -64,7 +64,7 @@ public class FanScript : MonoBehaviour
             angle -= 90.0f;
             AimAt = Quaternion.AngleAxis(angle, landN) * AimAt;
             Vector3 startPos = standsOnLand.transform.position;
-            Debug.DrawRay(startPos, AimAt * 20.0f, Color.magenta);
+         //   Debug.DrawRay(startPos, AimAt * 20.0f, Color.magenta);
             AimPositions.Clear();
 
             for(int i = 1; i < 25; i++)
