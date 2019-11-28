@@ -6,6 +6,9 @@ public class FanScript : MonoBehaviour
 {
     public GameObject standsOnLand { get; set; }
     public GameObject aimsAtLand { get; set; }
+    private GameObject aimsAtLandOld;
+    private GameObject standsOnLandOld;
+
     public GameObject WindSpawn;
 
     private GameObject tempWind = null;
@@ -128,16 +131,45 @@ public class FanScript : MonoBehaviour
         }
     }
 
+    private void swapLandColors()
+    {
+        if(aimsAtLand != aimsAtLandOld && aimsAtLandOld != null)
+        {
+            aimsAtLandOld.GetComponentInParent<MeshRenderer>().material.color = Color.yellow;
+        }
+        if (standsOnLand != standsOnLandOld && standsOnLandOld != null)
+        {
+            standsOnLandOld.GetComponentInParent<MeshRenderer>().material.color = Color.yellow;
+        }
+        if(aimsAtLand != null)
+        {
+            aimsAtLand.GetComponentInParent<MeshRenderer>().material.color = Color.red;
+            if(standsOnLand == null)
+                aimsAtLand.GetComponentInParent<MeshRenderer>().material.color = Color.yellow;
+        }
+        if (standsOnLand != null)
+        {
+            standsOnLand.GetComponentInParent<MeshRenderer>().material.color = Color.green;
+        }
+        
+
+        aimsAtLandOld = aimsAtLand;
+        standsOnLandOld = standsOnLand;
+    }
+
 
     void Update()
     {
         checkLandUnder();
         RegulateWind();
         checkAimingOnLand();
+        swapLandColors();
+
+
         // Vector3 AimAt = transform.TransformDirection(Vector3.right);
         // forceField.directionX = AimAt.x;
         // forceField.directionY = AimAt.z;
-       // Debug.Log("TEST: " + transform.eulerAngles.z);
+        // Debug.Log("TEST: " + transform.eulerAngles.z);
 
     }
     private int frames = 0;
