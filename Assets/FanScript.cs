@@ -9,8 +9,10 @@ public class FanScript : MonoBehaviour
     public GameObject WindSpawn;
 
     private GameObject tempWind = null;
+    private GameObject ParentImage;
 
     private RaycastHit hit;
+    private Vector3 landN = new Vector3(0, 0, 1);
     private int layerMask;
 
     void checkLandUnder()
@@ -22,6 +24,7 @@ public class FanScript : MonoBehaviour
             //Debug.Log("HIT: " + hit.transform.gameObject.GetComponentInParent<Country>().getCountryCode());
             //Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
             standsOnLand = hit.transform.gameObject;
+            landN = hit.normal;
         }
         else
         {
@@ -30,8 +33,60 @@ public class FanScript : MonoBehaviour
         }
     }
 
+  //  Vector3 gizmoPos = new Vector3(0, 0, 0);
+    List<Vector3> AimPositions = new List<Vector3>();
+
+    /*private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if(AimPositions != null)
+            foreach(var pos in AimPositions)
+            {
+                Gizmos.DrawSphere(pos, 0.015f);
+            }
+
+    }*/
+
     void checkAimingOnLand()
     {
+
+
+
+        if (standsOnLand != null)
+        {
+            //Debug.DrawRay(standsOnLand.transform.position, landN * 20.0f, Color.magenta);
+            Vector3 AimAt = standsOnLand.transform.up;
+
+            float angle = transform.eulerAngles.z - standsOnLand.transform.eulerAngles.z;
+            angle -= 90.0f;
+            AimAt = Quaternion.AngleAxis(angle, landN) * AimAt;
+            Vector3 startPos = standsOnLand.transform.position;
+            Debug.DrawRay(startPos, AimAt * 20.0f, Color.magenta);
+            AimPositions.Clear();
+
+            for(int i = 1; i < 25; i++)
+            {
+                Vector3 tmpPos = startPos + AimAt * (0.02f*i);
+                AimPositions.Add(tmpPos);
+            }
+
+            foreach(var pos in AimPositions)
+            {
+               // Debug.DrawLine(pos - landN, pos + landN, Color.magenta);
+                if (Physics.Linecast(pos - landN, pos + landN, out hit, layerMask))
+                {
+                    if(hit.collider.gameObject != standsOnLand)
+                    {
+                        //Debug.DrawLine(pos - landN, pos + landN, Color.magenta);
+                        aimsAtLand = hit.collider.gameObject;
+                        return;
+                    }
+                }
+            }
+
+        }
+
+
         /*aimsAtLand = null;
         Vector3 FromPos = transform.position;
         FromPos.y += 1.0f;
@@ -56,6 +111,7 @@ public class FanScript : MonoBehaviour
         layerMask = LayerMask.GetMask("Country");
         tempWind = Instantiate(WindSpawn);
         tempWind.SetActive(false);
+        ParentImage = GetComponentInParent<Transform>().gameObject;
     }
 
     void RegulateWind()
@@ -78,9 +134,10 @@ public class FanScript : MonoBehaviour
         checkLandUnder();
         RegulateWind();
         checkAimingOnLand();
-    // Vector3 AimAt = transform.TransformDirection(Vector3.right);
-    // forceField.directionX = AimAt.x;
-    // forceField.directionY = AimAt.z;
+        // Vector3 AimAt = transform.TransformDirection(Vector3.right);
+        // forceField.directionX = AimAt.x;
+        // forceField.directionY = AimAt.z;
+       // Debug.Log("TEST: " + transform.eulerAngles.z);
 
     }
     private int frames = 0;
