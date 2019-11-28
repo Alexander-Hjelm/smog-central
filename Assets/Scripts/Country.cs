@@ -5,9 +5,9 @@ using UnityEngine;
 public class Country : MonoBehaviour //All countries have this script
 {
     [SerializeField] private string _countryCode;
+    [SerializeField] private float _area; // Area in km2
 
-    public int NumParticles { get; set; }
-    public float Area { get; set; }
+    public int NumParticles { get; set; } // NumParticles should be Area * Instensity
     public int Production { get; set; }
 
     private Color SMOG_COLOR_LOW = Color.green;
@@ -61,6 +61,11 @@ public class Country : MonoBehaviour //All countries have this script
 
         // Set material color depending on CO2 conc
         SetMaterialColor(GetSmogColorByConcentration());
+    }
+
+    public float GetArea()
+    {
+        return _area;
     }
 
     private Color GetSmogColorByConcentration()
