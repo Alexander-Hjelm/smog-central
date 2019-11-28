@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Country : MonoBehaviour //All countries have this script
 {
+    [SerializeField] private string _countryCode;
 
     public int NumParticles { get; set; }
     public float Area { get; set; }
