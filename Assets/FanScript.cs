@@ -7,7 +7,6 @@ public class FanScript : MonoBehaviour
     public GameObject standsOnLand { get; set; }
     public GameObject aimsAtLand { get; set; }
     public GameObject WindSpawn;
-    private ParticleSystemForceField forceField;
 
     private GameObject tempWind = null;
 
@@ -58,27 +57,21 @@ public class FanScript : MonoBehaviour
     void Start()
     {
         layerMask = LayerMask.GetMask("Country");
-        forceField = GetComponent<ParticleSystemForceField>();
+        tempWind = Instantiate(WindSpawn);
+        tempWind.SetActive(false);
     }
 
     void RegulateWind()
     {
         if(standsOnLand != null)
         {
-            if(tempWind == null)
-            {
-                tempWind = Instantiate(WindSpawn);
-            }
+            tempWind.SetActive(true);
             tempWind.transform.position = standsOnLand.transform.position;
             tempWind.transform.rotation = transform.rotation;
         }
         else
         {
-            if(tempWind)
-            {
-                Destroy(tempWind);
-                tempWind = null;
-            }
+            tempWind.SetActive(false);
         }
     }
 
