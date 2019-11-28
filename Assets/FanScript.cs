@@ -123,7 +123,17 @@ public class FanScript : MonoBehaviour
         {
             tempWind.SetActive(true);
             tempWind.transform.position = standsOnLand.transform.position;
-            tempWind.transform.rotation = transform.rotation;
+            tempWind.transform.rotation = standsOnLand.transform.rotation;
+
+            Vector3 AimAt = standsOnLand.transform.up;
+            float angle = transform.eulerAngles.z - standsOnLand.transform.eulerAngles.z;
+            angle += 180.0f;
+            tempWind.transform.rotation = Quaternion.AngleAxis(angle, landN);
+            /*var tmpRot = tempWind.transform.rotation;
+            var tmpEuler = tmpRot.eulerAngles;
+            tmpEuler.z += 90.0f;
+            tmpEuler.z -= transform.eulerAngles.z;
+            tempWind.transform.eulerAngles = tmpEuler;*/
         }
         else
         {
