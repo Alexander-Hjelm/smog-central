@@ -14,9 +14,8 @@ public class Country : MonoBehaviour //All countries have this script
     private Color SMOG_COLOR_MID = Color.yellow;
     private Color SMOG_COLOR_HI = Color.red;
     // The thresholds on smog concentration that control what color will be shown
-    // TODO: What should these be? What is the maximum smog concentration?
-    private const float SMOG_C_UPPER_THRESH = 1.0f;
-    private const float SMOG_C_LOWER_THRESH = 1000.0f;
+    private const float SMOG_C_UPPER_THRESH = 1000.0f;
+    private const float SMOG_C_LOWER_THRESH = 0.0f;
 
     private Material _material;
     private int randNum;
