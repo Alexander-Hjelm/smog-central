@@ -32,16 +32,13 @@ public class FanScript : MonoBehaviour
 
     void checkAimingOnLand()
     {
-        aimsAtLand = null;
-
+        /*aimsAtLand = null;
         Vector3 FromPos = transform.position;
         FromPos.y += 1.0f;
         Vector3 AimAt = transform.TransformDirection(Vector3.right);
         AimAt.y = -4.0f;
         AimAt.Normalize();
-
         float yPiece = 1.0f / 80.0f;
-
         for (int i = 0; i < 80; i++)
         {
             AimAt.y += yPiece;
@@ -51,7 +48,7 @@ public class FanScript : MonoBehaviour
                 aimsAtLand = hit.transform.gameObject;
                 return;
             }
-        }
+        }*/
     }
 
     void Start()
@@ -80,7 +77,7 @@ public class FanScript : MonoBehaviour
     {
         checkLandUnder();
         RegulateWind();
-    //    checkAimingOnLand();
+        checkAimingOnLand();
     // Vector3 AimAt = transform.TransformDirection(Vector3.right);
     // forceField.directionX = AimAt.x;
     // forceField.directionY = AimAt.z;
