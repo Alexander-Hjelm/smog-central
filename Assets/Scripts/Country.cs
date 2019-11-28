@@ -9,6 +9,16 @@ public class Country : MonoBehaviour //All countries have this script
     public int NumParticles { get; set; }
     public float Area { get; set; }
     public int Production { get; set; }
+
+    private Color SMOG_COLOR_LOW = Color.green;
+    private Color SMOG_COLOR_MID = Color.yellow;
+    private Color SMOG_COLOR_HI = Color.red;
+    // The thresholds on smog concentration that control what color will be shown
+    // TODO: What should these be? What is the maximum smog concentration?
+    private const float SMOG_C_UPPER_THRESH = 1.0f;
+    private const float SMOG_C_LOWER_THRESH = 1000.0f;
+
+    private Material _material;
     private int randNum;
   //  public GameObject FactoryVisualPrefab;
   //  private GameObject FactoryVis;
@@ -20,6 +30,13 @@ public class Country : MonoBehaviour //All countries have this script
             return 0;
         }
         return NumParticles/Area;
+    }
+
+    private void Awake()
+    {
+        // Material setup
+		_material = new Material(Shader.Find("Custom/Rim"));
+        _material.color = SMOG_COLOR_MID;
     }
 
     void Start()
@@ -42,6 +59,30 @@ public class Country : MonoBehaviour //All countries have this script
         {
             NumParticles++;
         }
+
+        // Set material color depending on CO2 conc
+        SetMaterialColor(GetSmogColorByConcentration());
+    }
+
+    private Color GetSmogColorByConcentration()
+    {
+        float c = GetCO2();
+        float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / 2;
+
+        if (c < smogCMid)
+        {
+            return Color.Lerp(SMOG_COLOR_LOW, SMOG_COLOR_MID, c*2f);
+        }
+        else
+        {
+            return Color.Lerp(SMOG_COLOR_MID, SMOG_COLOR_HI, (c-smogCMid)*2f);
+        }
+
+    }
+
+    private void SetMaterialColor(Color color)
+    {
+        _material.color = color;
     }
 
 
