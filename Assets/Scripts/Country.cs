@@ -28,7 +28,7 @@ public class Country : MonoBehaviour //All countries have this script
         {
             return 0;
         }
-        return NumParticles/Area;
+        return NumParticles/_area;
     }
 
     private void Awake()
