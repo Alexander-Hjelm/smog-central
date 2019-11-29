@@ -109,7 +109,6 @@ public class MainScript : MonoBehaviour
 
     public static double GetCarbonIntensityByCountry(string countryCode)
     {
-        Debug.Log(_instance.co2_map["SE"]);
         Co2Data data = _instance.co2_map[countryCode];
         return data.carbonIntensity;
     }
