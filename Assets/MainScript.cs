@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-
+using System.Globalization;
 
 public class MainScript : MonoBehaviour
 {
@@ -49,10 +49,11 @@ public class MainScript : MonoBehaviour
                     continue;
                 switch (data_pair[0].Trim()) {
                     case "\"carbonIntensity\"":
-                        data.carbonIntensity = Double.Parse(data_pair[1].Trim());
+                       // Debug.Log("HEJ: " + data_pair[1].Trim());
+                        data.carbonIntensity = Double.Parse(data_pair[1].Trim(), CultureInfo.InvariantCulture);
                         break;
                     case "\"fossilFuelPercentage\"":
-                        data.fossilFuelPercentage = Double.Parse(data_pair[1].Trim());
+                        data.fossilFuelPercentage = Double.Parse(data_pair[1].Trim(), CultureInfo.InvariantCulture);
                         break;
                     case "\"time\"":
                         data.time = data_pair[1].Trim();
@@ -105,12 +106,13 @@ public class MainScript : MonoBehaviour
         {
            // land.GetComponent<Country>().ParticleType = FactorySpawn;
         }
+
     }
 
     public static double GetCarbonIntensityByCountry(string countryCode)
     {
         if (!_instance.co2_map.ContainsKey(countryCode))
-            return 0;
+            return 1;
         Co2Data data = _instance.co2_map[countryCode];
         return data.carbonIntensity;
     }

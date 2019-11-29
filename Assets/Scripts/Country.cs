@@ -101,7 +101,7 @@ public class Country : MonoBehaviour //All countries have this script
 
         if(_countryCode == "EE")
         {
-            Debug.Log("c= " + c + " smogCMid= " + smogCMid);
+        //    Debug.Log("c= " + c + " smogCMid= " + smogCMid);
         }
 
         if (c < smogCMid)
