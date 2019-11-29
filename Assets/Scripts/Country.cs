@@ -7,6 +7,13 @@ public class Country : MonoBehaviour //All countries have this script
     [SerializeField] private string _countryCode;
     [SerializeField] private float _area; // Area in km2
 
+    private GameObject particleObj;
+
+    public string getCountryCode()
+    {
+        return _countryCode;
+    }
+
     public int NumParticles { get; set; } // NumParticles should be Area * Instensity
     public int Production { get; set; }
 
@@ -36,6 +43,9 @@ public class Country : MonoBehaviour //All countries have this script
         // Material setup
 		_material = new Material(Shader.Find("Custom/Rim"));
         _material.color = SMOG_COLOR_MID;
+        particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
+        particleObj.transform.localPosition = new Vector3(0, 0, 0);
+        particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
     }
 
     void Start()

@@ -31,7 +31,6 @@ public class ParticleScript : MonoBehaviour
         }
         partSys.SetParticles(emittedParticles, emittedParticles.Length);*/
 
-
         var emiss = partSys.emission;
         var main = partSys.main;
         main.maxParticles = 10;
@@ -46,6 +45,7 @@ public class ParticleScript : MonoBehaviour
             }
 
         }
+       // emiss.rateOverTime = 50;
 
 
 
