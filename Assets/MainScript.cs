@@ -109,6 +109,8 @@ public class MainScript : MonoBehaviour
 
     public static double GetCarbonIntensityByCountry(string countryCode)
     {
+        if (!_instance.co2_map.ContainsKey(countryCode))
+            return 0;
         Co2Data data = _instance.co2_map[countryCode];
         return data.carbonIntensity;
     }
