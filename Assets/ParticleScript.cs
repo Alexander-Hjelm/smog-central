@@ -16,6 +16,12 @@ public class ParticleScript : MonoBehaviour
     {
         partSys = GetComponent<ParticleSystem>();
         land = GetComponentInParent<Country>();
+
+        // Set emission shape to the mesh renderer of the country
+        ParticleSystem.ShapeModule shape = partSys.shape;
+        shape.shapeType = ParticleSystemShapeType.MeshRenderer;
+        shape.meshRenderer = land.GetComponent<MeshRenderer>();
+        shape.meshShapeType = ParticleSystemMeshShapeType.Triangle;
     }
 
 
