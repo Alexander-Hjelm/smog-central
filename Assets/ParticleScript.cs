@@ -51,7 +51,8 @@ public class ParticleScript : MonoBehaviour
             }
 
         }
-       // emiss.rateOverTime = 50;
+        emiss.rateOverTime = 10;
+        main.maxParticles = 50;
 
 
 
