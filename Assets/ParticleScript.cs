@@ -5,6 +5,10 @@ using UnityEngine;
 //[ExecuteInEditMode]
 public class ParticleScript : MonoBehaviour
 {
+    // These constants control how many particles should spawn. Decrease for performance
+    private const float MAX_NUM_OF_PARTICLES = 1000f;   // Hard cap of number of particles in the system
+    private const float PARTICLE_NUM_CONVERSION_RATION = 0.00001f;  // Multiplier on the country's NumOfParticles
+
     private ParticleSystem partSys;
     private Country land;
 
@@ -34,9 +38,8 @@ public class ParticleScript : MonoBehaviour
 
         if (land)
         {
-            main.maxParticles = land.NumParticles;
-        //main.maxParticles = 50;
-            if (land.NumParticles >= 2)
+            main.maxParticles = (int)Mathf.Min(land.NumParticles * PARTICLE_NUM_CONVERSION_RATION, MAX_NUM_OF_PARTICLES);
+            if(land.NumParticles >= 2)
             {
                 emiss.rateOverTime = land.NumParticles / 2+1;
             }

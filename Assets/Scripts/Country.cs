@@ -54,11 +54,10 @@ public class Country : MonoBehaviour //All countries have this script
       //  FactoryVis = Instantiate(FactoryVisualPrefab, transform);
      //   FactoryVis.transform.localPosition = new Vector3(0, 0, 0);
         //FactoryVis.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-    }
-
-    private void FixedUpdate()
-    {
-      
+        
+        // Set NumParticles
+        double carbonIntensity = MainScript.GetCarbonIntensityByCountry(_countryCode);
+        NumParticles = (int)(carbonIntensity * _area);
     }
 
     private void Update()

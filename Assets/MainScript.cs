@@ -15,8 +15,11 @@ public class MainScript : MonoBehaviour
     public int co2_server_port;
     public string offline_co2_table = "offline_co2_table";
 
+    // Singleton ref
+    private static MainScript _instance;
+
     // co2_map holds a mapping from country codes to co2 figures
-    public Dictionary<string, Co2Data> co2_map = 
+    private Dictionary<string, Co2Data> co2_map = 
             new Dictionary<string, Co2Data>();
 
     // type for data received from co2server
@@ -83,8 +86,10 @@ public class MainScript : MonoBehaviour
     // public GameObject FactorySpawn;
     private List<GameObject> lands;
 
-    void Start()
+    private void Awake()
     {
+        _instance = this;
+
         lands = new List<GameObject>();
 
         print(">>>");
@@ -102,15 +107,10 @@ public class MainScript : MonoBehaviour
         }
     }
 
-
-    void Update()
+    public static double GetCarbonIntensityByCountry(string countryCode)
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        
+        Co2Data data = _instance.co2_map[countryCode];
+        return data.carbonIntensity;
     }
 
 }
