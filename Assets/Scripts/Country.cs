@@ -23,7 +23,7 @@ public class Country : MonoBehaviour //All countries have this script
     private Color COUNTRY_COLOR_INACTIVE = Color.grey;
 
     // The thresholds on smog concentration that control what color will be shown
-    private const float SMOG_C_UPPER_THRESH = 1000.0f;
+    private const float SMOG_C_UPPER_THRESH = 800.0f;
     private const float SMOG_C_LOWER_THRESH = 0.0f;
 
     private Material _material;
@@ -96,8 +96,13 @@ public class Country : MonoBehaviour //All countries have this script
 
     private Color GetSmogColorByConcentration()
     {
-        float c = GetCO2();
-        float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / 2;
+        float c = GetCO2() / SMOG_C_UPPER_THRESH;
+        float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / (SMOG_C_UPPER_THRESH * 2f);
+
+        if(_countryCode == "EE")
+        {
+            Debug.Log("c= " + c + " smogCMid= " + smogCMid);
+        }
 
         if (c < smogCMid)
         {
