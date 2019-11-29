@@ -190,9 +190,11 @@ public class FanScript : MonoBehaviour
 
         if (standsOnLand && aimsAtLand && frames == 1)
         {
-            Country c1 = standsOnLand.GetComponent<Country>();
-            Country c2 = aimsAtLand.GetComponent<Country>();
-            if(c1.NumParticles > 0)
+            Country c1 = standsOnLand.GetComponentInParent<Country>();
+            Country c2 = aimsAtLand.GetComponentInParent<Country>();
+            if (c1 == null)
+                Debug.Log("NULL COUNTRY");
+            else if(c1.NumParticles > 0)
             {
                 c1.NumParticles--;
                 c2.NumParticles++;
