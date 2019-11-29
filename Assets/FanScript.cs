@@ -192,7 +192,7 @@ public class FanScript : MonoBehaviour
         {
             Country c1 = standsOnLand.GetComponentInParent<Country>();
             Country c2 = aimsAtLand.GetComponentInParent<Country>();
-            if (c1 == null)
+            if (c1 == null || c2 == null)
                 Debug.Log("NULL COUNTRY");
             else if(c1.NumParticles > 0)
             {
