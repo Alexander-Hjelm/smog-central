@@ -17,11 +17,13 @@ public class Country : MonoBehaviour //All countries have this script
     public int NumParticles { get; set; } // NumParticles should be Area * Instensity
     public int Production { get; set; }
 
-    private Color SMOG_COLOR_LOW = Color.green;
-    private Color SMOG_COLOR_MID = Color.yellow;
-    private Color SMOG_COLOR_HI = Color.red;
+    private Color COUNTRY_COLOR_SMOG_LOW = Color.green;
+    private Color COUNTRY_COLOR_SMOG_MID = Color.yellow;
+    private Color COUNTRY_COLOR_SMOG_HI = Color.red;
+    private Color COUNTRY_COLOR_INACTIVE = Color.grey;
+
     // The thresholds on smog concentration that control what color will be shown
-    private const float SMOG_C_UPPER_THRESH = 1000.0f;
+    private const float SMOG_C_UPPER_THRESH = 800.0f;
     private const float SMOG_C_LOWER_THRESH = 0.0f;
 
     private Material _material;
@@ -42,10 +44,10 @@ public class Country : MonoBehaviour //All countries have this script
     {
         // Material setup
 		_material = new Material(Shader.Find("Custom/Rim"));
-        _material.color = SMOG_COLOR_MID;
-        particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
-        particleObj.transform.localPosition = new Vector3(0, 0, 0);
-        particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        _material.SetFloat("_RimEffect", 1f);
+        SetMaterialColor(COUNTRY_COLOR_SMOG_MID);   // Default color
+        GetComponent<MeshRenderer>().material = _material;
+
     }
 
     void Start()
@@ -57,7 +59,22 @@ public class Country : MonoBehaviour //All countries have this script
         
         // Set NumParticles
         double carbonIntensity = MainScript.GetCarbonIntensityByCountry(_countryCode);
-        NumParticles = (int)(carbonIntensity * _area);
+
+        // If carbon intensity is 0, this country is not in the data set and should be disabled
+        if (carbonIntensity == 0f)
+        {
+            SetMaterialColor(COUNTRY_COLOR_INACTIVE);
+            Destroy(this);
+        }
+        else
+        {
+            NumParticles = (int)(carbonIntensity * _area);
+
+            // Instantiate particle system
+            particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
+            particleObj.transform.localPosition = new Vector3(0, 0, 0);
+            particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        }
     }
 
     private void Update()
@@ -79,16 +96,21 @@ public class Country : MonoBehaviour //All countries have this script
 
     private Color GetSmogColorByConcentration()
     {
-        float c = GetCO2();
-        float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / 2;
+        float c = GetCO2() / SMOG_C_UPPER_THRESH;
+        float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / (SMOG_C_UPPER_THRESH * 2f);
+
+        if(_countryCode == "EE")
+        {
+            Debug.Log("c= " + c + " smogCMid= " + smogCMid);
+        }
 
         if (c < smogCMid)
         {
-            return Color.Lerp(SMOG_COLOR_LOW, SMOG_COLOR_MID, c*2f);
+            return Color.Lerp(COUNTRY_COLOR_SMOG_LOW, COUNTRY_COLOR_SMOG_MID, c*2f);
         }
         else
         {
-            return Color.Lerp(SMOG_COLOR_MID, SMOG_COLOR_HI, (c-smogCMid)*2f);
+            return Color.Lerp(COUNTRY_COLOR_SMOG_MID, COUNTRY_COLOR_SMOG_HI, (c-smogCMid)*2f);
         }
 
     }
