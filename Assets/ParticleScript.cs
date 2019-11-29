@@ -22,6 +22,8 @@ public class ParticleScript : MonoBehaviour
         shape.shapeType = ParticleSystemShapeType.MeshRenderer;
         shape.meshRenderer = land.GetComponent<MeshRenderer>();
         shape.meshShapeType = ParticleSystemMeshShapeType.Triangle;
+
+        GetComponent<ParticleSystemRenderer>().enabled = true;
     }
 
 
