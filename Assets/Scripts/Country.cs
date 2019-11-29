@@ -66,13 +66,15 @@ public class Country : MonoBehaviour //All countries have this script
             SetMaterialColor(COUNTRY_COLOR_INACTIVE);
             Destroy(this);
         }
+        else
+        {
+            NumParticles = (int)(carbonIntensity * _area);
 
-        NumParticles = (int)(carbonIntensity * _area);
-
-        // Instantiate particle system
-        particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
-        particleObj.transform.localPosition = new Vector3(0, 0, 0);
-        particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            // Instantiate particle system
+            particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
+            particleObj.transform.localPosition = new Vector3(0, 0, 0);
+            particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        }
     }
 
     private void Update()
