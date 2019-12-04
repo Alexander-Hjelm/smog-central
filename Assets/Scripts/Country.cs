@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Country : MonoBehaviour //All countries have this script
 {
-    private enum CountryType
+    public enum CountryType
     {
         CLEAN,
         DIRTY
@@ -101,6 +101,9 @@ public class Country : MonoBehaviour //All countries have this script
                 _stableSmogLevelHigh = carbonIntensity + 500f;
                 _countryType = CountryType.DIRTY;
             }
+
+            // Register country with game manager
+            MainScript.RegisterCountry(this);
         }
 
     }

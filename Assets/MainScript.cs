@@ -18,6 +18,9 @@ public class MainScript : MonoBehaviour
     // Singleton ref
     private static MainScript _instance;
 
+    // Ref to in-game Country objects
+    private List<Country> _registeredCountries = new List<Country>();
+
     // co2_map holds a mapping from country codes to co2 figures
     private Dictionary<string, Co2Data> co2_map = 
             new Dictionary<string, Co2Data>();
@@ -109,12 +112,36 @@ public class MainScript : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        // Win check
+        bool win = true;
+        foreach (Country country in _registeredCountries)
+        {
+            if (country.GetCountryType == Country.CountryType.CLEAN)
+            {
+                win = false;
+                break;
+            }
+        }
+        if (win)
+        {
+            // We have won the game
+            Debug.Log("We won the game!");
+        }
+    }
+
     public static double GetCarbonIntensityByCountry(string countryCode)
     {
         if (!_instance.co2_map.ContainsKey(countryCode))
             return 1;
         Co2Data data = _instance.co2_map[countryCode];
         return data.carbonIntensity;
+    }
+
+    public static void RegisterCountry(Country country)
+    {
+        _instance._registeredCountries.Add(country);
     }
 
 }
