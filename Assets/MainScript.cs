@@ -118,7 +118,7 @@ public class MainScript : MonoBehaviour
         bool win = true;
         foreach (Country country in _registeredCountries)
         {
-            if (country.GetCountryType == Country.CountryType.CLEAN)
+            if (country.GetCountryType() == Country.CountryType.CLEAN)
             {
                 win = false;
                 break;
