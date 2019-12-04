@@ -107,6 +107,16 @@ public class Country : MonoBehaviour //All countries have this script
 
     private void Update()
     {
+        // Set CountryType depending on smog level
+        if (GetCO2() > 500f)
+        {
+            _countryType = CountryType.DIRTY;
+        }
+        else
+        {
+            _countryType = CountryType.CLEAN;
+        }
+
         // Set material color depending on CO2 conc
         SetMaterialColor(GetSmogColorByConcentration());
     }
@@ -127,6 +137,11 @@ public class Country : MonoBehaviour //All countries have this script
             // Particle level should go down
             NumParticles -= _particleProductionRate;
         }
+    }
+
+    public CountryType GetCountryType()
+    {
+        return _countryType;
     }
 
     public float GetArea()
