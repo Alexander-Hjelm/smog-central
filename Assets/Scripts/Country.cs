@@ -154,11 +154,6 @@ public class Country : MonoBehaviour //All countries have this script
         float c = GetCO2() / SMOG_C_UPPER_THRESH;
         float smogCMid = (SMOG_C_UPPER_THRESH - SMOG_C_LOWER_THRESH) / (SMOG_C_UPPER_THRESH * 2f);
 
-        if(_countryCode == "EE")
-        {
-        //    Debug.Log("c= " + c + " smogCMid= " + smogCMid);
-        }
-
         if (c < smogCMid)
         {
             return Color.Lerp(COUNTRY_COLOR_SMOG_LOW, COUNTRY_COLOR_SMOG_MID, c*2f);
