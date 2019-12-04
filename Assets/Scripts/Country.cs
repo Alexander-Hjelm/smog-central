@@ -39,7 +39,7 @@ public class Country : MonoBehaviour //All countries have this script
 
     private Material _material;
     private CountryType _countryType;
-    private int randNum;
+    private float _co2PreviousFrame;
   //  public GameObject FactoryVisualPrefab;
   //  private GameObject FactoryVis;
 
@@ -110,8 +110,10 @@ public class Country : MonoBehaviour //All countries have this script
 
     private void Update()
     {
+        float co2 = GetCO2();
+
         // Set CountryType depending on smog level
-        if (GetCO2() > 500f)
+        if (co2 > 500f)
         {
             _countryType = CountryType.DIRTY;
         }
@@ -122,6 +124,18 @@ public class Country : MonoBehaviour //All countries have this script
 
         // Set material color depending on CO2 conc
         SetMaterialColor(GetSmogColorByConcentration());
+
+        // Warning if the country is close to converting from Dirty to Clean
+        if (co2 < _co2PreviousFrame && _countryType == CountryType.DIRTY && co2 > 500f && co2 < 550f)
+        {
+            // Set the material color in a blinking pattern
+            if (Time.time % 0.25f < 0.125f)
+            {
+                SetMaterialColor(Color.red);
+            }
+        }
+
+        _co2PreviousFrame = co2;
     }
 
     private void FixedUpdate()
