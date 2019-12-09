@@ -142,6 +142,7 @@ public class FanScript : MonoBehaviour
         }
     }
 
+    /*
     private void swapLandColors()
     {
         if(aimsAtLand != aimsAtLandOld && aimsAtLandOld != null)
@@ -167,6 +168,7 @@ public class FanScript : MonoBehaviour
         aimsAtLandOld = aimsAtLand;
         standsOnLandOld = standsOnLand;
     }
+    */
 
 
     void Update()
@@ -174,7 +176,7 @@ public class FanScript : MonoBehaviour
         checkLandUnder();
         RegulateWind();
         checkAimingOnLand();
-        swapLandColors();
+        //swapLandColors();
 
 
         // Vector3 AimAt = transform.TransformDirection(Vector3.right);
