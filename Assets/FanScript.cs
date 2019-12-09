@@ -199,8 +199,14 @@ public class FanScript : MonoBehaviour
                 Debug.Log("NULL COUNTRY");
             else if(c1.NumParticles > 0)
             {
+                int c1NumParticlesOriginal = c1.NumParticles;
                 c1.NumParticles -= _smogTransferRate * 1000000;
-                c2.NumParticles += _smogTransferRate * 1000000;
+
+                if (c1NumParticlesOriginal - _smogTransferRate * 1000000 < 0)
+                    // Dont add particles unless they were first subtracted from c1
+                    c2.NumParticles += c1NumParticlesOriginal;
+                else
+                    c2.NumParticles += _smogTransferRate * 1000000;
             }
 
         }

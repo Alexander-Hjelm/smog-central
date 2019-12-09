@@ -135,6 +135,10 @@ public class Country : MonoBehaviour //All countries have this script
             }
         }
 
+        // Make sure number of particles is always positive
+        if (co2 < 0)
+            NumParticles = 0;
+
         _co2PreviousFrame = co2;
     }
 
