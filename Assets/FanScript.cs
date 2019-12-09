@@ -6,6 +6,7 @@ public class FanScript : MonoBehaviour
 {
     public GameObject standsOnLand { get; set; }
     public GameObject aimsAtLand { get; set; }
+    [SerializeField] private int _smogTransferRate = 100;
     private GameObject aimsAtLandOld;
     private GameObject standsOnLandOld;
 
@@ -196,8 +197,8 @@ public class FanScript : MonoBehaviour
                 Debug.Log("NULL COUNTRY");
             else if(c1.NumParticles > 0)
             {
-                c1.NumParticles--;
-                c2.NumParticles++;
+                c1.NumParticles -= _smogTransferRate * 1000000;
+                c2.NumParticles += _smogTransferRate * 1000000;
             }
 
         }

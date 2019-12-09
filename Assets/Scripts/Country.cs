@@ -20,7 +20,7 @@ public class Country : MonoBehaviour //All countries have this script
         return _countryCode;
     }
 
-    public int NumParticles { get; set; } // NumParticles should be Area * Instensity
+    public int NumParticles; // NumParticles should be Area * Instensity
 
     private Color COUNTRY_COLOR_SMOG_LOW = Color.green;
     private Color COUNTRY_COLOR_SMOG_MID = Color.yellow;
