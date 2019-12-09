@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33d0badb935ac844bd1652389e82598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _smogTransferRate: 5
   WindSpawn: {fileID: 6422360210896913823, guid: b859f8610439f12498c9e4fe1e3bc7e6,
     type: 3}
 --- !u!1 &5250008696010918654

@@ -6,7 +6,7 @@ public class FanScript : MonoBehaviour
 {
     public GameObject standsOnLand { get; set; }
     public GameObject aimsAtLand { get; set; }
-    [SerializeField] private int _smogTransferRate = 100;
+    [SerializeField] private int _smogTransferRate = 1;
     private GameObject aimsAtLandOld;
     private GameObject standsOnLandOld;
 
