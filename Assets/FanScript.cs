@@ -22,7 +22,7 @@ public class FanScript : MonoBehaviour
     {
         Vector3 AimAt = transform.TransformDirection(Vector3.back);
 
-        if (Physics.Raycast(transform.position, AimAt, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position-(AimAt* 500.0f), AimAt, out hit, Mathf.Infinity, layerMask))
         {
             //Debug.Log("HIT: " + hit.transform.gameObject.GetComponentInParent<Country>().getCountryCode());
             //Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.yellow);
@@ -31,7 +31,7 @@ public class FanScript : MonoBehaviour
         }
         else
         {
-           // Debug.DrawRay(transform.position, AimAt * 10.0f, Color.red);
+          //  Debug.DrawRay(transform.position - (AimAt * 500.0f), AimAt * 1500.0f, Color.red);
             standsOnLand = null;
         }
     }
