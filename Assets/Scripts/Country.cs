@@ -84,7 +84,8 @@ public class Country : MonoBehaviour //All countries have this script
             // Instantiate particle system
             particleObj = Instantiate(GetComponentInParent<ContinentScript>().particleObject,transform,true);
             particleObj.transform.localPosition = new Vector3(0, 0, 0);
-            particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            //particleObj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            particleObj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
             // Set stable levels
             if (carbonIntensity < 500f)
