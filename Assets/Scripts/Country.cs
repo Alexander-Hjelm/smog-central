@@ -22,9 +22,10 @@ public class Country : MonoBehaviour //All countries have this script
 
     public int NumParticles; // NumParticles should be Area * Instensity
 
-    private Color COUNTRY_COLOR_SMOG_LOW = Color.green;
-    private Color COUNTRY_COLOR_SMOG_MID = Color.yellow;
-    private Color COUNTRY_COLOR_SMOG_HI = Color.red;
+    private Color COUNTRY_COLOR_CLEAN_LOW = Color.green;
+    private Color COUNTRY_COLOR_CLEAN_HI = Color.yellow;
+    private Color COUNTRY_COLOR_DIRTY_LOW = new Color(1f, 0.5f, 0f, 1f); // Orange
+    private Color COUNTRY_COLOR_DIRTY_HI = Color.red;
     private Color COUNTRY_COLOR_INACTIVE = Color.grey;
 
     // What level will the smog intensity stabilize around? Depending on if this is a clean or a dirty country
@@ -57,7 +58,7 @@ public class Country : MonoBehaviour //All countries have this script
         // Material setup
 		_material = new Material(Shader.Find("Custom/Rim"));
         _material.SetFloat("_RimEffect", 1f);
-        SetMaterialColor(COUNTRY_COLOR_SMOG_MID);   // Default color
+        SetMaterialColor(COUNTRY_COLOR_CLEAN_LOW);   // Default color
         GetComponent<MeshRenderer>().material = _material;
 
     }
@@ -178,11 +179,11 @@ public class Country : MonoBehaviour //All countries have this script
 
         if (c < smogCMid)
         {
-            return Color.Lerp(COUNTRY_COLOR_SMOG_LOW, COUNTRY_COLOR_SMOG_MID, c*2f);
+            return Color.Lerp(COUNTRY_COLOR_CLEAN_LOW, COUNTRY_COLOR_CLEAN_HI, c*2f);
         }
         else
         {
-            return Color.Lerp(COUNTRY_COLOR_SMOG_MID, COUNTRY_COLOR_SMOG_HI, (c-smogCMid)*2f);
+            return Color.Lerp(COUNTRY_COLOR_DIRTY_LOW, COUNTRY_COLOR_DIRTY_HI, (c-smogCMid)*2f);
         }
 
     }
