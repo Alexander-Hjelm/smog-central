@@ -45,7 +45,7 @@ Shader "Custom/Rim" {
             fixed4 frag(v2f i) : COLOR {
                 float t = tex2D(_MainTex, i.uv);
                 float val = 1 - abs(dot(i.viewDir, i.normal)) * _RimEffect;
-                return _Color * _Color.a * val * val * t + _Color/16;
+                return _Color * _Color.a * val * val * t + _Color/4;
             }
  
             ENDCG
