@@ -12,16 +12,16 @@ public class Ui : MonoBehaviour
 
     /* public stuff */
     public Type type;
-    public GameObject fan;
-
+    public GameObject fan,Game;
 
     /* private stuff */
+    private bool wonnered = false;
     private string prefix;
     private UnityEngine.UI.Text text_script;
     private FanScript fan_script;
     private GameObject country;
     private Country country_script;
-    private Dictionary<string, string> country_names = 
+    private Dictionary<string, string> country_names =
             new Dictionary<string, string> {
         ["NO"] = "Norway",
         ["SE"] = "Sweden",
@@ -71,6 +71,7 @@ public class Ui : MonoBehaviour
             case Type.source: prefix = "source: \n"; break;
             case Type.target: prefix = "target: \n"; break;
         }
+        Game = GameObject.Find("Game");
 
         this.text_script = GetComponent<UnityEngine.UI.Text>();
         this.text_script.text = "EMTPY";
@@ -80,6 +81,7 @@ public class Ui : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      if(!wonnered){
         switch (this.type) {
             case Type.source: country = this.fan_script.standsOnLand; break;
             case Type.target: country = this.fan_script.aimsAtLand; break;
@@ -90,8 +92,13 @@ public class Ui : MonoBehaviour
         }
         country_script = country.GetComponentInParent<Country>();
         float ci = (country_script.GetCO2() > 2.0f) ? country_script.GetCO2() : 0.0f;
-        string uitext = prefix + country_names[country_script._countryCode] 
+        string uitext = prefix + country_names[country_script._countryCode]
                 + "\n" + ci.ToString("0.00");
         this.text_script.text = uitext;
-    }
+        if(Game.GetComponent<MainScript>().won){
+          this.text_script.text = "YOU WON";
+          wonnered = true;
+        }
+      }
+      }
 }

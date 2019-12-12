@@ -22,7 +22,7 @@ public class MainScript : MonoBehaviour
     private List<Country> _registeredCountries = new List<Country>();
 
     // co2_map holds a mapping from country codes to co2 figures
-    private Dictionary<string, Co2Data> co2_map = 
+    private Dictionary<string, Co2Data> co2_map =
             new Dictionary<string, Co2Data>();
 
     // type for data received from co2server
@@ -37,7 +37,7 @@ public class MainScript : MonoBehaviour
         while ((line = sr.ReadLine()) != null) {
             // split key from json
             string[] kv_pair = line.Split('=');
-            
+
             // find key
             string[] key_split = kv_pair[0].Split('-');
             string key = key_split[0];
@@ -48,7 +48,7 @@ public class MainScript : MonoBehaviour
             Co2Data data = new Co2Data();
             foreach (string dp in data_pairs) {
                 String[] data_pair = dp.Split(':');
-                if (String.Equals(data_pair[1].Trim(), "null")) 
+                if (String.Equals(data_pair[1].Trim(), "null"))
                     continue;
                 switch (data_pair[0].Trim()) {
                     case "\"carbonIntensity\"":
@@ -79,7 +79,7 @@ public class MainScript : MonoBehaviour
             parse_co2_table(sr);
         } catch (Exception e) {
             // TODO
-            // couldn't get data from server 
+            // couldn't get data from server
             print("couldn't get data from server. Using local offline table.");
             var fileStream = new FileStream(offline_co2_table, FileMode.Open);
             StreamReader sr = new StreamReader(fileStream);
@@ -111,7 +111,7 @@ public class MainScript : MonoBehaviour
         }
 
     }
-
+public bool won = false;
     private void Update()
     {
         // Win check
@@ -128,6 +128,7 @@ public class MainScript : MonoBehaviour
         {
             // We have won the game
             Debug.Log("We won the game!");
+            won = true;
         }
     }
 
