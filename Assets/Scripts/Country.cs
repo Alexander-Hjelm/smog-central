@@ -10,7 +10,7 @@ public class Country : MonoBehaviour //All countries have this script
         DIRTY
     }
 
-    [SerializeField] private string _countryCode;
+    [SerializeField] public string _countryCode;
     [SerializeField] private float _area; // Area in km2
 
     private GameObject particleObj;
