@@ -35,7 +35,7 @@ public class Country : MonoBehaviour //All countries have this script
     private const int _particleProductionRate = 1000;
 
     // The thresholds on smog concentration that control what color will be shown
-    private const float SMOG_C_UPPER_THRESH = 800.0f;
+    private const float SMOG_C_UPPER_THRESH = 1000.0f;
     private const float SMOG_C_LOWER_THRESH = 0.0f;
 
     private Material _material;
@@ -149,13 +149,13 @@ public class Country : MonoBehaviour //All countries have this script
         // Particle production
         float smogLevel = GetCO2();
         if (_countryType == CountryType.CLEAN && smogLevel < _stableSmogLevelLow
-            || _countryType == CountryType.DIRTY && smogLevel < _stableSmogLevelHigh)
+            || _countryType == CountryType.DIRTY && smogLevel < 1000)
         {
             // Particle level should go up
             NumParticles += _particleProductionRate;
         }
         else if (_countryType == CountryType.CLEAN && smogLevel > _stableSmogLevelLow
-            || _countryType == CountryType.DIRTY && smogLevel > _stableSmogLevelHigh)
+            || _countryType == CountryType.DIRTY && smogLevel > 1000)
         {
             // Particle level should go down
             NumParticles -= _particleProductionRate;
