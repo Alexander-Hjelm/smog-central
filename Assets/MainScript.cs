@@ -69,6 +69,17 @@ public class MainScript : MonoBehaviour
         }
     }
 
+    //  https://stackoverflow.com/questions/1879395/how-do-i-generate-a-stream-from-a-string
+    public static Stream GenerateStreamFromString(string s)
+    {
+        var stream = new MemoryStream();
+        var writer = new StreamWriter(stream);
+        writer.Write(s);
+        writer.Flush();
+        stream.Position = 0;
+        return stream;
+    }
+    
     // download data and store in co2_map
     void download_data() {
         try {
@@ -81,8 +92,9 @@ public class MainScript : MonoBehaviour
             // TODO
             // couldn't get data from server
             print("couldn't get data from server. Using local offline table.");
-            var fileStream = new FileStream(offline_co2_table, FileMode.Open);
-            StreamReader sr = new StreamReader(fileStream);
+            //var fileStream = new FileStream(offline_co2_table, FileMode.Open);
+            var stream = GenerateStreamFromString(OfflineCo2TableWrapper.table);
+            StreamReader sr = new StreamReader(stream);
             parse_co2_table(sr);
         }
     }
