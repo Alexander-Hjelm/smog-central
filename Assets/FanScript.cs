@@ -20,6 +20,26 @@ public class FanScript : MonoBehaviour
     private Vector3 landN = new Vector3(0, 0, 1);
     private int layerMask;
 
+    public GameObject cameraObj;
+
+    void checkCameraRay()
+    {
+        var startPos = cameraObj.transform.position;
+        var targetPos = transform.position;
+        var direction = targetPos - startPos;
+        direction.Normalize();
+
+        if (Physics.Raycast(startPos, direction, out hit, Mathf.Infinity, layerMask))
+        {
+            standsOnLand = hit.transform.gameObject;
+            landN = hit.normal;
+        }
+        else
+        {
+            standsOnLand = null;
+        }
+    }
+
     void checkLandUnder()
     {
         Vector3 AimAt = transform.TransformDirection(Vector3.back);
@@ -174,7 +194,8 @@ public class FanScript : MonoBehaviour
 
     void Update()
     {
-        checkLandUnder();
+        checkCameraRay();
+        //checkLandUnder();
         RegulateWind();
         checkAimingOnLand();
         //swapLandColors();
