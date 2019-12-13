@@ -5,7 +5,8 @@ using UnityEngine;
 public class FanScript : MonoBehaviour
 {
     public GameObject standsOnLand { get; set; }
-    public GameObject aimsAtLand { get; set; }
+    public GameObject aimsAtLand { get; set;}
+    public GameObject map;
     [SerializeField] private int _smogTransferRate = 1;
     private GameObject aimsAtLandOld;
     private GameObject standsOnLandOld;
@@ -178,6 +179,10 @@ public class FanScript : MonoBehaviour
         checkAimingOnLand();
         //swapLandColors();
 
+        // lock fan rotation to map plane
+        Transform map_t = map.transform;
+        //transform.eulerAngles = new Vector3(map_t.eulerAngles.x, map_t.eulerAngles.y+90, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(map_t.eulerAngles.x, map_t.eulerAngles.y, transform.eulerAngles.z);
 
         // Vector3 AimAt = transform.TransformDirection(Vector3.right);
         // forceField.directionX = AimAt.x;
