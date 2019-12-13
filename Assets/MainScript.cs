@@ -79,7 +79,7 @@ public class MainScript : MonoBehaviour
         stream.Position = 0;
         return stream;
     }
-    
+
     // download data and store in co2_map
     void download_data() {
         try {
@@ -142,6 +142,10 @@ public bool won = false;
             Debug.Log("We won the game!");
             won = true;
         }
+    }
+
+    public List<Country> getContries(){
+      return _registeredCountries;
     }
 
     public static double GetCarbonIntensityByCountry(string countryCode)

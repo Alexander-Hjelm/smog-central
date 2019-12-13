@@ -13,10 +13,14 @@ public class Ui : MonoBehaviour
     /* public stuff */
     public Type type;
     public GameObject fan,Game;
+    public GameObject lands;
+    public List<Country> registeredCountries = new List<Country>();
 
     /* private stuff */
+
+
     private bool wonnered = false;
-    private string prefix;
+    private string prefix, contries;
     private UnityEngine.UI.Text text_script;
     private FanScript fan_script;
     private GameObject country;
@@ -72,10 +76,12 @@ public class Ui : MonoBehaviour
             case Type.target: prefix = "target: \n"; break;
         }
         Game = GameObject.Find("Game");
+        registeredCountries = Game.GetComponent<MainScript>().getContries();
 
         this.text_script = GetComponent<UnityEngine.UI.Text>();
         this.text_script.text = "EMTPY";
         this.fan_script = fan.GetComponent<FanScript>();
+
     }
 
     // Update is called once per frame
@@ -86,8 +92,22 @@ public class Ui : MonoBehaviour
             case Type.source: country = this.fan_script.standsOnLand; break;
             case Type.target: country = this.fan_script.aimsAtLand; break;
         }
-        if (country == null){
+        if (country == null && this.type == Type.source){
             this.text_script.text = prefix + "-";
+            contries = "";
+            foreach (Transform child in lands.transform)
+            {
+                var cobj = child.gameObject;
+                Country cscr = cobj.GetComponent<Country>();
+                if (cscr == null) {
+                  //this.text_script.text = "null";
+                  continue;
+                }
+                if (cscr.GetCO2() > 500.0f){
+                  contries += country_names[cscr._countryCode] + " " + cscr.GetCO2().ToString("0.00") + "\n";
+                }
+            }
+            this.text_script.text = contries;
             return;
         }
         country_script = country.GetComponentInParent<Country>();
