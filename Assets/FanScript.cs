@@ -22,6 +22,7 @@ public class FanScript : MonoBehaviour
     void checkLandUnder()
     {
         Vector3 AimAt = transform.TransformDirection(Vector3.back);
+       // Vector3 AimAt = Vector3.back;
 
         if (Physics.Raycast(transform.position-(AimAt* 500.0f), AimAt, out hit, Mathf.Infinity, layerMask))
         {
@@ -32,7 +33,7 @@ public class FanScript : MonoBehaviour
         }
         else
         {
-          //  Debug.DrawRay(transform.position - (AimAt * 500.0f), AimAt * 1500.0f, Color.red);
+            Debug.DrawRay(transform.position - (AimAt * 500.0f), AimAt * 1500.0f, Color.red);
             standsOnLand = null;
         }
     }
