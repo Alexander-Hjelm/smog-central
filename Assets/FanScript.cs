@@ -59,13 +59,14 @@ public class FanScript : MonoBehaviour
         if (standsOnLand != null)
         {
             //Debug.DrawRay(standsOnLand.transform.position, landN * 20.0f, Color.magenta);
-            Vector3 AimAt = standsOnLand.transform.up;
+            //Vector3 AimAt = standsOnLand.transform.up;
 
-            float angle = transform.eulerAngles.z - standsOnLand.transform.eulerAngles.z;
-            angle -= 90.0f;
-            AimAt = Quaternion.AngleAxis(angle, landN) * AimAt;
-            Vector3 startPos = standsOnLand.transform.position;
-         //   Debug.DrawRay(startPos, AimAt * 20.0f, Color.magenta);
+            //float angle = transform.eulerAngles.z - standsOnLand.transform.eulerAngles.z;
+            //angle -= 90.0f;
+            //AimAt = Quaternion.AngleAxis(angle, landN) * AimAt;
+            Vector3 startPos = transform.position;
+            Vector3 AimAt = transform.right;
+            //Debug.DrawRay(startPos, AimAt * 20.0f, Color.magenta);
             AimPositions.Clear();
 
             for(int i = 1; i < 25; i++)
@@ -83,6 +84,7 @@ public class FanScript : MonoBehaviour
                     {
                         //Debug.DrawLine(pos - landN, pos + landN, Color.magenta);
                         aimsAtLand = hit.collider.gameObject;
+                        //Debug.Log(aimsAtLand);
                         return;
                     }
                 }
